@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+<title>Inox Home | Loja Oficial</title>
+<link rel="icon" href="/images/favicon.png">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap">
+<style>
+:root{--fg:#161823;--muted:#6b7280;--line:#eef0f4;--primary:#fe2c55}
+*{box-sizing:border-box}
+body{margin:0;background:#f4f6f8;font-family:Inter,system-ui,-apple-system,sans-serif;color:var(--fg)}
+.wrap{max-width:480px;margin:0 auto;background:#fff;min-height:100vh;position:relative;padding-bottom:24px}
+.hero{position:relative;height:230px;overflow:hidden;background:#0f2f6b}
+.hero img{width:100%;height:100%;object-fit:cover;display:block}
+.hero::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.35),rgba(0,0,0,0) 45%)}
+.topbar{position:absolute;top:0;left:0;right:0;z-index:3;display:flex;align-items:center;justify-content:space-between;padding:12px 14px}
+.ico{width:38px;height:38px;border-radius:50%;background:rgba(0,0,0,.32);backdrop-filter:blur(4px);border:0;color:#fff;display:flex;align-items:center;justify-content:center;cursor:pointer}
+.ico svg{width:20px;height:20px}
+.icos{display:flex;gap:8px}
+.card{position:relative;z-index:4;margin:-58px 14px 0;background:#fff;border-radius:18px;box-shadow:0 12px 30px rgba(16,24,40,.12);padding:14px;display:flex;gap:12px;align-items:center}
+.card img.logo{width:58px;height:58px;border-radius:50%;object-fit:contain;background:#fff;border:1px solid var(--line);flex:0 0 auto}
+.nm{font-size:17px;font-weight:800;display:flex;align-items:center;gap:6px}
+.sold{font-size:13px;color:var(--muted);margin-top:2px}
+.acts{margin-left:auto;display:flex;flex-direction:column;gap:8px;flex:0 0 auto}
+.btn{border:0;border-radius:999px;padding:9px 20px;font-size:13.5px;font-weight:800;cursor:pointer;transition:.18s;font-family:inherit}
+.btn-follow{background:var(--primary);color:#fff;box-shadow:0 6px 16px rgba(254,44,85,.28)}
+.btn-follow.on{background:#fff;color:var(--muted);border:1px solid #e3e5ea;box-shadow:none}
+.btn-msg{background:#fff;color:var(--fg);border:1px solid #e3e5ea}
+.btn:active{transform:scale(.97)}
+.tabs{display:flex;gap:26px;padding:16px 18px 0;border-bottom:1px solid var(--line);margin-top:14px}
+.tab{background:none;border:0;padding:0 0 10px;font-size:15.5px;font-weight:700;color:#9aa1ad;cursor:pointer;position:relative;font-family:inherit}
+.tab.on{color:var(--fg)}
+.tab.on::after{content:"";position:absolute;left:0;right:0;bottom:-1px;height:3px;border-radius:3px;background:var(--fg)}
+.pane{display:none;padding:14px}
+.pane.on{display:block}
+.banner{border-radius:14px;overflow:hidden;border:1px solid var(--line)}
+.banner img{width:100%;display:block}
+.strip{display:flex;gap:8px;margin-top:12px}
+.chip{flex:1;text-align:center;background:#f7f8fa;border:1px solid var(--line);border-radius:12px;padding:10px 6px}
+.chip b{display:block;font-size:14px}
+.chip span{font-size:11px;color:var(--muted)}
+.h{font-size:13.5px;font-weight:800;margin:16px 0 8px;letter-spacing:.01em}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.prod{border:1px solid var(--line);border-radius:14px;overflow:hidden;background:#fff;cursor:pointer;display:flex;flex-direction:column;text-align:left;padding:0;font-family:inherit}
+.prod img{width:100%;aspect-ratio:1/1;object-fit:contain;background:#fafafb}
+.prod .info{padding:9px 10px 11px}
+.prod .t{font-size:12.5px;font-weight:600;line-height:1.35;min-height:34px}
+.prod .p{margin-top:6px;font-size:16px;font-weight:800;color:var(--primary)}
+.prod .o{font-size:11px;color:#9aa1ad;text-decoration:line-through;margin-left:5px}
+.prod .s{font-size:11px;color:var(--muted);margin-top:3px}
+.hint{font-size:12px;color:var(--muted);margin:-4px 0 10px}
+.prod{position:relative;transition:.16s}
+.prod.sel{border-color:var(--primary);box-shadow:0 0 0 2px rgba(254,44,85,.16)}
+.prod .tick{position:absolute;top:8px;right:8px;width:22px;height:22px;border-radius:50%;background:#fff;border:1px solid #dfe2e8;display:flex;align-items:center;justify-content:center}
+.prod .tick svg{width:13px;height:13px;opacity:0}
+.prod.sel .tick{background:var(--primary);border-color:var(--primary)}
+.prod.sel .tick svg{opacity:1}
+.qty{margin-top:8px;display:flex;align-items:center;justify-content:space-between;background:#f6f7f9;border-radius:10px;padding:3px}
+.qty button{width:28px;height:26px;border:0;background:#fff;border-radius:8px;font-size:15px;font-weight:800;color:var(--fg);cursor:pointer;box-shadow:0 1px 2px rgba(0,0,0,.06);font-family:inherit}
+.qty b{font-size:13px;font-variant-numeric:tabular-nums}
+.bar{position:fixed;left:0;right:0;bottom:0;z-index:40;transform:translateY(110%);transition:.24s cubic-bezier(.2,.8,.2,1);pointer-events:none}
+.bar.on{transform:none;pointer-events:auto}
+.bar-in{max-width:480px;margin:0 auto;background:#fff;border-top:1px solid var(--line);box-shadow:0 -8px 26px rgba(16,24,40,.12);padding:10px 14px calc(10px + env(safe-area-inset-bottom));display:flex;align-items:center;gap:12px}
+.bar-info{min-width:0;flex:1 1 auto;line-height:1.25}
+.bar-info b{display:block;font-size:17px;font-weight:800;color:var(--primary)}
+.bar-info span{display:block;font-size:11.5px;color:var(--muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.bar-btn{flex:0 0 auto;border:0;border-radius:999px;background:var(--primary);color:#fff;font-weight:800;font-size:14px;padding:12px 20px;cursor:pointer;box-shadow:0 8px 18px rgba(254,44,85,.3);font-family:inherit}
+.bar-btn:active{transform:scale(.97)}
+.toast{position:fixed;left:50%;bottom:26px;transform:translate(-50%,20px);background:#161823;color:#fff;font-size:13px;font-weight:600;padding:10px 16px;border-radius:999px;opacity:0;pointer-events:none;transition:.25s;z-index:50}
+.toast.on{opacity:1;transform:translate(-50%,0)}
+</style>
+<script src="/js/pixel.js"></script>
+</head>
+<body>
+<div class="wrap">
+  <div class="hero">
+    <div class="topbar">
+      <button class="ico" id="lv-back" aria-label="Voltar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg></button>
+      <div class="icos">
+        <button class="ico" aria-label="Buscar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"></circle><path d="m20 20-3.2-3.2"></path></svg></button>
+        <button class="ico" id="lv-cart" aria-label="Carrinho"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1"></circle><circle cx="20" cy="21" r="1"></circle><path d="M1 1h4l2.7 13.4a2 2 0 0 0 2 1.6h9.7a2 2 0 0 0 2-1.6L23 6H6"></path></svg></button>
+      </div>
+    </div>
+    <img src="/images/loja-capa.webp" alt="Inox Home - a loja do povo brasileiro" fetchpriority="high">
+  </div>
+
+  <div class="card">
+    <img class="logo" src="/images/inoxhome-logo.webp" alt="Inox Home">
+    <div style="min-width:0">
+      <div class="nm">Inox Home
+        <svg width="16" height="16" viewBox="0 0 48 48"><polygon fill="#1d9bf0" points="29.62,3 33.053,8.308 39.367,8.624 39.686,14.937 44.997,18.367 42.116,23.995 45,29.62 39.686,33.053 39.367,39.367 33.053,39.686 29.62,45 24,42.116 18.38,45 14.947,39.686 8.633,39.367 8.314,33.053 3,29.62 5.884,24 3,18.38 8.314,14.947 8.633,8.633 14.947,8.314 18.38,3 24,5.884"></polygon><polygon fill="#fff" points="21.396,31.255 14.899,24.76 17.021,22.639 21.428,27.046 30.996,17.772 33.084,19.926"></polygon></svg>
+      </div>
+      <div class="sold">128.4K vendido(s)</div>
+    </div>
+    <div class="acts">
+      <button class="btn btn-follow" id="lv-follow">Seguir</button>
+      <button class="btn btn-msg" id="lv-msg">Mensagem</button>
+    </div>
+  </div>
+
+  <div class="tabs">
+    <button class="tab on" data-tab="home">Página inicial</button>
+    <button class="tab" data-tab="prod">Produtos</button>
+  </div>
+
+  <div class="pane on" id="pane-home">
+    <div class="banner"><img src="/images/loja-banner.webp" alt="Direto da indústria para a sua casa" loading="lazy"></div>
+    <div class="strip">
+      <div class="chip"><b>4.9</b><span>Avaliação</span></div>
+      <div class="chip"><b>128.4K</b><span>Vendidos</span></div>
+      <div class="chip"><b>24h</b><span>Envio</span></div>
+    </div>
+    <div class="h">Mais vendidos da loja</div>
+    <div class="grid" id="grid-home"></div>
+  </div>
+
+  <div class="pane" id="pane-prod">
+    <div class="h" style="margin-top:2px">Todos os produtos</div>
+    <div class="hint">Toque para selecionar uma ou mais opções e ajuste a quantidade.</div>
+    <div class="grid" id="grid-prod" style="padding-bottom:90px"></div>
+  </div>
+</div>
+<div class="bar" id="lv-bar">
+  <div class="bar-in">
+    <div class="bar-info" id="lv-bar-info"></div>
+    <button class="bar-btn" id="lv-bar-btn" type="button">Continuar compra</button>
+  </div>
+</div>
+<div class="toast" id="lv-toast"></div>
+
+<script src="/js/utm.js"></script><script src="/js/resume-upsell.js" defer></script>
+<script src="/js/support-widget.js" defer></script>
+<script>
+(function(){
+  var PRODS=[
+    {n:'Bike Ergométrica Spinning (Preta/Vermelha)',l:'Preta/Vermelha',s:'Preta com detalhes vermelhos',i:'/images/f2/cores/vermelha.webp',p:87.90,o:474.90},
+    {n:'Bike Ergométrica Spinning (Toda Preta)',l:'Preta',s:'Toda preta',i:'/images/f2/cores/preta.webp',p:87.90,o:474.90},
+    {n:'Bike Ergométrica Spinning (Preta/Cinza)',l:'Preta/Cinza',s:'Preta com detalhes cinza',i:'/images/f2/cores/cinza.webp',p:92.90,o:474.90}
+  ];
+  var qty={};
+  function fmt(v){return 'R$ '+v.toFixed(2).replace('.',',');}
+  function toast(t){var el=document.getElementById('lv-toast');el.textContent=t;el.classList.add('on');clearTimeout(el._t);el._t=setTimeout(function(){el.classList.remove('on')},1800);}
+
+  function go(path){
+    var url=(window.lvUrl?window.lvUrl(path):path);
+    try{ if(window.top && window.top!==window && window.top.location.origin===window.location.origin){ window.top.location.assign(url); return; } }catch(e){}
+    try{ window.location.assign(url); }catch(e){ window.location.href=url; }
+  }
+
+  function checkout(items){
+    var totalQty=items.reduce(function(s,x){return s+x.q},0);
+    var total=items.reduce(function(s,x){return s+x.p.p*x.q},0);
+    var nome=(items.length===1&&items[0].q===1)?items[0].p.n
+      :'Bike Ergométrica Spinning ('+items.map(function(x){return x.p.l+' x'+x.q}).join(' + ')+')';
+    try{
+      localStorage.setItem('corSelecionada',nome);
+      localStorage.setItem('corImagem',items[0].p.i);
+      localStorage.setItem('qtdSelecionada',String(totalQty));
+      localStorage.setItem('precoUnit',String(Math.round(total/totalQty*100)/100));
+    }catch(e){}
+    try{ if(window.lvTrackInitiateCheckout) window.lvTrackInitiateCheckout(total); }catch(e){}
+    go('/pagamento');
+  }
+
+  function card(p,selectable){
+    var b=document.createElement(selectable?'div':'button');
+    b.className='prod';
+    if(!selectable)b.type='button';
+    b.innerHTML='<img src="'+p.i+'" alt="'+p.n+'" loading="lazy">'+
+      (selectable?'<span class="tick" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg></span>':'')+
+      '<div class="info"><div class="t">Bike Ergométrica Spinning Profissional 120kg</div>'+
+      '<div class="p">'+fmt(p.p)+'<span class="o">'+fmt(p.o)+'</span></div>'+
+      '<div class="s">'+p.s+' · Frete grátis</div>'+
+      (selectable?'<div class="qty"><button type="button" data-a="-" aria-label="Diminuir">−</button><b>0</b><button type="button" data-a="+" aria-label="Aumentar">+</button></div>':'')+
+      '</div>';
+    if(!selectable){b.addEventListener('click',function(){checkout([{p:p,q:1}])});return b;}
+
+    var num=b.querySelector('.qty b');
+    function set(v){
+      qty[p.n]=Math.max(0,Math.min(9,v));
+      num.textContent=qty[p.n];
+      b.classList.toggle('sel',qty[p.n]>0);
+      updateBar();
+    }
+    b.querySelectorAll('.qty button').forEach(function(btn){
+      btn.addEventListener('click',function(e){e.stopPropagation();set((qty[p.n]||0)+(btn.dataset.a==='+'?1:-1));});
+    });
+    b.addEventListener('click',function(){set((qty[p.n]||0)>0?0:1);});
+    return b;
+  }
+
+  function selected(){
+    return PRODS.filter(function(p){return qty[p.n]>0}).map(function(p){return {p:p,q:qty[p.n]}});
+  }
+  var bar=document.getElementById('lv-bar'),barInfo=document.getElementById('lv-bar-info'),barBtn=document.getElementById('lv-bar-btn');
+  function updateBar(){
+    var it=selected();
+    if(!it.length){bar.classList.remove('on');return;}
+    var t=it.reduce(function(s,x){return s+x.q},0);
+    var v=it.reduce(function(s,x){return s+x.p.p*x.q},0);
+    bar.classList.add('on');
+    barInfo.innerHTML='<b>'+fmt(v)+'</b><span>'+t+' '+(t>1?'itens':'item')+' · '+it.map(function(x){return x.p.l+' x'+x.q}).join(' + ')+'</span>';
+    barBtn.textContent='Continuar compra';
+  }
+  barBtn.addEventListener('click',function(){var it=selected();if(it.length)checkout(it);});
+
+  var gh=document.getElementById('grid-home'),gp=document.getElementById('grid-prod');
+  PRODS.slice(0,4).forEach(function(p){gh.appendChild(card(p,false))});
+  PRODS.forEach(function(p){gp.appendChild(card(p,true))});
+
+
+  document.querySelectorAll('.tab').forEach(function(t){
+    t.addEventListener('click',function(){
+      document.querySelectorAll('.tab').forEach(function(x){x.classList.remove('on')});
+      t.classList.add('on');
+      document.getElementById('pane-home').classList.toggle('on',t.dataset.tab==='home');
+      document.getElementById('pane-prod').classList.toggle('on',t.dataset.tab==='prod');
+      window.scrollTo({top:0,behavior:'smooth'});
+    });
+  });
+
+  var f=document.getElementById('lv-follow');
+  f.addEventListener('click',function(){
+    var on=f.classList.toggle('on');
+    f.textContent=on?'Seguindo':'Seguir';
+    if(on)toast('Você está seguindo Inox Home ✓');
+  });
+
+  document.getElementById('lv-msg').addEventListener('click',function(){
+    if(window.supportWidgetOpen){window.supportWidgetOpen();}
+    else{setTimeout(function(){window.supportWidgetOpen&&window.supportWidgetOpen()},400);}
+  });
+
+  document.getElementById('lv-back').addEventListener('click',function(){
+    if(history.length>1)history.back(); else go('/');
+  });
+  document.getElementById('lv-cart').addEventListener('click',function(){
+    document.querySelector('.tab[data-tab="prod"]').click();
+  });
+})();
+</script>
+<script src="/js/back-redirect.js"></script></body>
+</html>

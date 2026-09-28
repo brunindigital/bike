@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Oferta exclusiva — TikTok Shop</title>
+<link rel="icon" href="/favicon.png">
+<style>
+*{box-sizing:border-box}
+body{margin:0;background:#f5f5f5;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;color:#171717}
+.wrap{max-width:560px;margin:0 auto;padding:0 12px 32px}
+header{background:#fff}
+.hd{max-width:560px;margin:0 auto;padding:12px 16px;display:flex;align-items:center;justify-content:space-between}
+.brand{display:inline-flex;align-items:center;gap:6px}
+.brand img.wm{height:22px;width:auto;display:block;object-fit:contain}
+.brand img.vf{height:16px;width:16px;display:block;object-fit:contain}
+.safe{display:flex;align-items:center;gap:6px;color:#059669;font-size:10px;font-weight:800;line-height:1.15;text-align:right}
+.alert{margin-top:14px;background:#f43f5e;color:#fff;border-radius:18px;padding:14px 16px;display:flex;align-items:center;gap:12px;box-shadow:0 8px 22px rgba(244,63,94,.28);position:relative;overflow:hidden;animation:alertPulse 2.4s ease-in-out infinite}
+.alert::before{content:"";position:absolute;inset:0;background:linear-gradient(105deg,transparent 30%,rgba(255,255,255,.18) 45%,rgba(255,255,255,.28) 50%,rgba(255,255,255,.18) 55%,transparent 70%);transform:translateX(-100%);animation:alertShine 3.2s ease-in-out infinite}
+.alert h2{margin:0;font-size:15px;font-weight:800;position:relative;z-index:1}
+.alert p{margin:2px 0 0;font-size:13px;opacity:.95;position:relative;z-index:1}
+.alert svg{position:relative;z-index:1;animation:alertIcon 2.4s ease-in-out infinite}
+@keyframes alertPulse{0%,100%{box-shadow:0 8px 22px rgba(244,63,94,.28)}50%{box-shadow:0 10px 30px rgba(244,63,94,.42)}}
+@keyframes alertShine{0%{transform:translateX(-100%)}40%,100%{transform:translateX(100%)}}
+@keyframes alertIcon{0%,100%{transform:rotate(0deg)}10%{transform:rotate(-12deg)}20%{transform:rotate(10deg)}30%{transform:rotate(-6deg)}40%{transform:rotate(0deg)}}
+.card{background:#fff;border-radius:18px;padding:16px;margin-top:14px;box-shadow:0 1px 3px rgba(0,0,0,.06)}
+.card.live{padding:14px 14px 12px}
+.tagline{display:flex;align-items:center;gap:10px}
+.off{background:#f43f5e;color:#fff;font-weight:800;font-size:12px;padding:5px 9px;border-radius:8px}
+.flash{font-weight:800;font-size:12.5px;letter-spacing:.04em;color:#404040}
+.prod{display:flex;gap:12px;margin-top:12px;align-items:center}
+.prod img{width:88px;height:88px;object-fit:contain;border-radius:12px;background:#fafafa;flex:none}
+.prod h3{margin:0;font-size:15px;font-weight:700;line-height:1.25}
+.stars{color:#facc15;font-size:12.5px;margin-top:3px}
+.stars small{color:#525252;margin-left:5px;font-size:11.5px}
+.prices{margin-top:5px;display:flex;align-items:baseline;gap:8px}
+.old{color:#a3a3a3;text-decoration:line-through;font-size:13px}
+.new{color:#059669;font-size:24px;font-weight:800}
+.pix{color:#737373;font-size:12px;margin-top:2px}
+.benefits{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:14px}
+.ben{background:#fafafa;border-radius:12px;padding:12px 6px;text-align:center;font-size:12px;font-weight:700;color:#262626}
+.ben svg{display:block;margin:0 auto 4px}
+.cta{margin-top:14px;width:100%;border:0;background:#171717;color:#fff;font-weight:800;font-size:16px;letter-spacing:.02em;padding:18px;border-radius:14px;cursor:pointer}
+.cta:active{transform:scale(.99)}
+.note{text-align:center;color:#737373;font-size:13px;margin-top:10px}
+.live-hd{display:flex;align-items:center;gap:8px;padding-bottom:10px;border-bottom:1px solid #f0f0f0}
+.live-hd h4{margin:0;font-size:13px;font-weight:800;letter-spacing:.02em;color:#171717}
+.live-dot{width:8px;height:8px;border-radius:50%;background:#ef4444;box-shadow:0 0 0 0 rgba(239,68,68,.6);animation:lvpulse 1.6s infinite}
+@keyframes lvpulse{0%{box-shadow:0 0 0 0 rgba(239,68,68,.55)}70%{box-shadow:0 0 0 8px rgba(239,68,68,0)}100%{box-shadow:0 0 0 0 rgba(239,68,68,0)}}
+.live-tag{margin-left:auto;display:inline-flex;align-items:center;gap:4px;background:#f0fdf4;border:1px solid #bbf7d0;color:#15803d;font-size:10px;font-weight:800;padding:3px 8px;border-radius:999px;text-transform:uppercase;letter-spacing:.04em}
+.live-tag::before{content:"";width:5px;height:5px;border-radius:50%;background:#22c55e}
+.feed{margin-top:12px;display:flex;flex-direction:column;gap:10px;min-height:220px;max-height:400px;overflow:hidden}
+.rv{display:flex;gap:10px;opacity:0;transform:translateY(12px) scale(.985);animation:lvin .42s cubic-bezier(.2,.8,.3,1) forwards}
+@keyframes lvin{to{opacity:1;transform:translateY(0) scale(1)}}
+.rv img.av{width:38px;height:38px;border-radius:50%;object-fit:cover;flex:none;background:#f5f5f5;box-shadow:0 1px 2px rgba(0,0,0,.06)}
+.bubble{background:#fff;border:1px solid #f0f0f0;border-radius:14px;border-top-left-radius:4px;padding:10px 12px;flex:1;min-width:0;box-shadow:0 1px 2px rgba(0,0,0,.04)}
+.rvh{display:flex;align-items:center;gap:6px;flex-wrap:nowrap}
+.rvh b{font-size:13px;font-weight:700;color:#171717;white-space:nowrap}
+.verified-icon{width:14px;height:14px;display:block;flex:none}
+.rv .stars{color:#facc15;font-size:11.5px;margin-top:2px;letter-spacing:.5px}
+.rv p{margin:5px 0 0;font-size:13px;color:#404040;line-height:1.45;white-space:pre-wrap}
+.caret{display:inline-block;width:1.5px;height:13px;background:#f43f5e;vertical-align:-2px;margin-left:1px;animation:lvcaret .9s steps(1) infinite}
+@keyframes lvcaret{0%,49%{opacity:1}50%,100%{opacity:0}}
+.when{font-size:10.5px;color:#8a8a8a;margin-top:6px;display:flex;align-items:center;gap:5px}
+.when::before{content:"";width:4px;height:4px;border-radius:50%;background:#22c55e}
+.shots{display:flex;gap:5px;margin-top:7px}
+.shots img{width:54px;height:54px;border-radius:8px;object-fit:cover}
+.typing{margin-top:12px;display:none;align-items:center;gap:7px;color:#64748b;font-size:11.5px;background:#f8fafc;border-radius:999px;padding:5px 10px 5px 5px;width:fit-content}
+.typing.on{display:flex}
+.typing img{width:20px;height:20px;border-radius:50%;object-fit:cover;flex:none}
+.dots{display:inline-flex;gap:3px;align-items:center}
+.dots i{width:5px;height:5px;border-radius:50%;background:#94a3b8;display:inline-block;animation:lvbob 1s infinite}
+.dots i:nth-child(2){animation-delay:.15s}
+.dots i:nth-child(3){animation-delay:.3s}
+@keyframes lvbob{0%,100%{transform:translateY(0);opacity:.5}50%{transform:translateY(-3px);opacity:1}}
+@media (prefers-reduced-motion:reduce){.rv{animation:none;opacity:1;transform:none}.live-dot,.dots i,.caret{animation:none}}
+footer{text-align:center;padding:24px 0 8px;color:#737373;font-size:13px}
+footer img{width:34px;height:34px;object-fit:contain;margin:8px 0}
+</style>
+<script src="/js/pixel.js"></script>
+</head>
+<body>
+<header>
+  <div class="hd">
+    <span class="brand">
+      <img class="wm" src="/__l5e/assets-v1/264088a4-b045-4d72-b4e7-9b64c78c3c9e/tiktokshop-wordmark-new.jpg" alt="TikTok Shop">
+      <img class="vf" src="/__l5e/assets-v1/b07bc435-6da6-476f-b7e8-35cff3378cfc/verified-badge.jpg" alt="Verificado">
+    </span>
+    <div class="safe"><div>PAGAMENTO<br>100% SEGURO</div></div>
+  </div>
+</header>
+
+<div class="wrap">
+  <div class="alert">
+    <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" style="width:26px;height:26px;flex:none"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>
+    <div>
+      <h2>ESPERA! Não vá embora ainda</h2>
+      <p>Liberamos um cupom exclusivo só pra você</p>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="tagline"><span class="off" id="lv-off">-30% OFF</span><span class="flash">OFERTA RELÂMPAGO</span></div>
+    <div class="prod">
+      <img id="lv-img" src="/images/bike-ergometrica-spinning.webp" alt="Bike Ergométrica Spinning">
+      <div>
+        <h3 id="lv-nome">Bike Ergométrica Spinning</h3>
+        <div class="stars">★★★★★ <small>4.6 (722)</small></div>
+        <div class="prices"><span class="old" id="lv-old">R$ 87,90</span><span class="new" id="lv-new">R$ 61,90</span></div>
+        <div class="pix">à vista no Pix</div>
+      </div>
+    </div>
+    <div class="benefits">
+      <div class="ben"><svg viewBox="0 0 24 24" fill="none" stroke="#059669" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:20px;height:20px;display:block;margin:0 auto 4px"><path d="M14 18V6a1 1 0 0 0-1-1H3a1 1 0 0 0-1 1v11a1 1 0 0 0 1 1h2"/><path d="M14 9h4l3 3v5a1 1 0 0 1-1 1h-1"/><circle cx="7.5" cy="18.5" r="1.5"/><circle cx="17.5" cy="18.5" r="1.5"/></svg>Frete grátis</div>
+      <div class="ben"><svg viewBox="0 0 24 24" fill="none" stroke="#059669" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:20px;height:20px;display:block;margin:0 auto 4px"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/><path d="m9 12 2 2 4-4"/></svg>Garantia 12 meses</div>
+      <div class="ben"><svg viewBox="0 0 24 24" fill="none" stroke="#059669" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:20px;height:20px;display:block;margin:0 auto 4px"><circle cx="12" cy="12" r="9"/><path d="m8.5 12.5 2.5 2.5 4.5-5"/></svg>Pagamento seguro</div>
+    </div>
+    <button class="cta" id="lv-cta">QUERO APROVEITAR A OFERTA</button>
+    <div class="note">Oferta válida apenas nessa sessão</div>
+  </div>
+
+  <div class="card live">
+    <div class="live-hd">
+      <span class="live-dot"></span>
+      <h4>AVALIAÇÕES EM TEMPO REAL</h4>
+      <span class="live-tag">ao vivo</span>
+    </div>
+    <div class="feed" id="lv-feed"></div>
+    <div class="typing" id="lv-typing"><img id="lv-typing-av" src="" alt=""><span id="lv-typing-name">alguém</span> está digitando <span class="dots"><i></i><i></i><i></i></span></div>
+  </div>
+
+  <footer>
+    Formas de pagamento
+    <div><img src="/assets/pix-logo-EQU-5l0k.webp" alt="Pix"></div>
+    © 2026 Tiktok Shop
+  </footer>
+</div>
+
+<script>
+(function(){
+  var SNAP=(function(){
+    try{ return JSON.parse(localStorage.getItem('lv_downsell_snap')||'null'); }catch(e){ return null; }
+  })();
+  var MODO=(SNAP&&SNAP.mode==='metade')?'metade':'unico';
+  function fmt(n){ return 'R$ '+Number(n||0).toFixed(2).replace('.',','); }
+  function r2(n){ return Number(Number(n||0).toFixed(2)); }
+
+  var PROMO=61.90;
+  var old=87.90;
+  try{
+    var pu=parseFloat(localStorage.getItem('precoUnit')||'');
+    if(pu&&!isNaN(pu)&&pu>PROMO) old=r2(pu);
+  }catch(e){}
+
+  var nome='', img='';
+  try{ nome=(SNAP&&SNAP.nome)||localStorage.getItem('corSelecionada')||''; }catch(e){}
+  try{ img=(SNAP&&SNAP.img)||localStorage.getItem('corImagem')||''; }catch(e){}
+  if(nome) document.getElementById('lv-nome').textContent=nome;
+  if(img) document.getElementById('lv-img').src=img;
+
+  if(MODO==='metade'){
+    old=r2(SNAP.total);
+    PROMO=r2(SNAP.total*0.5);
+    var extras=[];
+    if(SNAP.bumps) extras.push(SNAP.bumps+(SNAP.bumps>1?' ofertas extras':' oferta extra'));
+    if(SNAP.shipping>0) extras.push('frete');
+    document.getElementById('lv-nome').textContent='Seu pedido completo'+(extras.length?' + '+extras.join(' + '):'');
+  }
+
+  document.getElementById('lv-old').textContent=fmt(old);
+  document.getElementById('lv-new').textContent=fmt(PROMO);
+  var pct=old>0?Math.round((1-PROMO/old)*100):0;
+  document.getElementById('lv-off').textContent='-'+(pct>0?pct:50)+'% OFF';
+
+  function go(url){
+    try{ if(window.top && window.top!==window && window.top.location.origin===window.location.origin){ window.top.location.assign(url); return; } }catch(e){}
+    window.location.assign(url);
+  }
+
+  document.getElementById('lv-cta').addEventListener('click', function(){
+    try{ sessionStorage.setItem('lv_downsell_done','1'); }catch(e){}
+    try{ if(window.lvTrackInitiateCheckout) window.lvTrackInitiateCheckout(MODO==='metade'?0:34.90); }catch(e){}
+    if(MODO==='metade'){
+      /* Mantém o pedido inteiro (kits, ofertas e frete) e aplica 50% OFF em tudo no checkout. */
+      try{ sessionStorage.setItem('lv_disc','0.5'); }catch(e){}
+      go('/pagamento');
+      return;
+    }
+    try{
+      sessionStorage.removeItem('lv_disc');
+      localStorage.setItem('precoUnit','34.90');
+      localStorage.setItem('qtdSelecionada','1');
+      localStorage.removeItem('pedidoResumo');
+    }catch(e){}
+    go('/pagamento');
+  });
+})();
+</script>
+<script>
+(function(){
+  var feed=document.getElementById('lv-feed'),
+      typing=document.getElementById('lv-typing'),
+      tAv=document.getElementById('lv-typing-av'),
+      tName=document.getElementById('lv-typing-name');
+  if(!feed) return;
+  var VERIFIED='/__l5e/assets-v1/0fa0ac80-47c7-4b57-b7e6-0f8ded797721/verified-badge.png';
+  var MSGS=[
+    {n:'Isabela N.',av:'/images/perfis/p18.webp',s:5,t:'Chegou a bike e já montei no mesmo dia, veio tudo certinho com as ferramentas. Faço 40 min todo dia de manhã 😂',ph:['/images/f2/reviews/rev-1.webp']},
+    {n:'Camila S.',av:'/images/perfis/p16.webp',s:5,t:'Veio muito bem embalada, estrutura protegida com isopor e plástico. Nenhum arranhão. Já tá na sala, ficou linda demais.',ph:['/images/f2/reviews/rev-2.webp','/images/f2/reviews/rev-3.webp']},
+    {n:'Fernanda M.',av:'/images/perfis/p12.webp',s:5,t:'Uso todo dia antes do trabalho. O banco regula de altura certinho e o painel marca tempo, distância e calorias.',ph:['/images/f2/reviews/rev-5.webp']},
+    {n:'Juliana R.',av:'/images/perfis/p19.webp',s:5,t:'Demorei pra comprar achando que era fraquinha, mas não é. Estrutura pesada, firme mesmo, aguenta meus 95kg tranquilo. Recomendo demais.',ph:['/images/f2/reviews/rev-6.webp']},
+    {n:'Patrícia L.',av:'/images/perfis/p8.webp',s:5,t:'Meu marido é chato com barulho e até ele elogiou. É silenciosa demais, pedalo vendo série e não atrapalha nada.',ph:['/images/f2/reviews/rev-7.webp']},
+    {n:'Ana Clara D.',av:'/images/perfis/p7.webp',s:5,t:'Top demais! Levei pro ap da minha mãe e ela já pediu uma pra ela 😍',ph:['/images/f2/reviews/rev-8.webp']},
+    {n:'Beatriz C.',av:'/images/perfis/p20.webp',s:5,t:'Pedalo de manhã e à noite, a resistência regula super bem. Nunca travou. O ajuste do guidão é bem firme.',ph:['/images/f2/reviews/rev-9.webp']},
+    {n:'Larissa T.',av:'/images/perfis/p4.webp',s:5,t:'Boa qualidade, valeu muito o preço.'},
+    {n:'Mariana F.',av:'/images/perfis/p15.webp',s:5,t:'Adorei! O banco é bem confortável, dá pra pedalar uma hora tranquila.',ph:['/images/f2/reviews/rev-10.webp']},
+    {n:'Renata G.',av:'/images/perfis/p1.webp',s:5,t:'Comprei com o cupom e valeu cada centavo. Chegou antes do prazo.',ph:['/images/f2/reviews/rev-4.webp']}
+  ];
+  function stars(n){ var s=''; for(var i=0;i<5;i++) s+= i<n?'★':'☆'; return s; }
+  var MAX=6, i=0;
+  var AGO=['agora mesmo','há 1 minuto','há 2 minutos','há 3 minutos','há 4 minutos'];
+
+  function shell(m){
+    var el=document.createElement('div');
+    el.className='rv';
+    el.innerHTML='<img class="av" src="'+m.av+'" alt="'+m.n+'" loading="lazy">'+
+      '<div class="bubble"><div class="rvh"><b>'+m.n+'</b><img class="verified-icon" src="'+VERIFIED+'" alt="Verificado"></div>'+
+      '<div class="stars">'+stars(m.s)+'</div>'+
+      '<p class="lv-txt"></p></div>';
+    feed.appendChild(el);
+    while(feed.children.length>MAX) feed.removeChild(feed.firstChild);
+    return el;
+  }
+  function finish(el,m){
+    var b=el.querySelector('.bubble');
+    if(m.ph){
+      var d=document.createElement('div');
+      d.className='shots';
+      d.innerHTML=m.ph.map(function(p){return '<img src="'+p+'" alt="Foto do cliente" loading="lazy">';}).join('');
+      b.appendChild(d);
+    }
+    var w=document.createElement('span');
+    w.className='when';
+    w.textContent=AGO[Math.floor(Math.random()*AGO.length)];
+    b.appendChild(w);
+  }
+  /* Digita a avaliação caractere a caractere, como num chat ao vivo. */
+  function typeOut(el,m,cb){
+    var p=el.querySelector('.lv-txt'), txt=m.t, k=0;
+    var caret=document.createElement('span'); caret.className='caret';
+    p.appendChild(caret);
+    (function step(){
+      k+=Math.max(1,Math.round(Math.random()*3));
+      if(k>=txt.length){
+        p.textContent=txt;
+        finish(el,m);
+        cb&&cb();
+        return;
+      }
+      p.textContent=txt.slice(0,k);
+      p.appendChild(caret);
+      setTimeout(step, 18+Math.random()*32);
+    })();
+  }
+  function instant(m){
+    var el=shell(m);
+    el.querySelector('.lv-txt').textContent=m.t;
+    finish(el,m);
+  }
+
+  instant(MSGS[i++]); instant(MSGS[i++]);
+
+  function loop(){
+    if(document.hidden){ setTimeout(loop,2500); return; }
+    var m=MSGS[i++ % MSGS.length];
+    tAv.src=m.av; tName.textContent=m.n;
+    typing.classList.add('on');
+    setTimeout(function(){
+      typing.classList.remove('on');
+      var el=shell(m);
+      typeOut(el,m,function(){
+        setTimeout(loop, 2600+Math.random()*2200);
+      });
+    }, 1400+Math.random()*1100);
+  }
+  setTimeout(loop, 1800);
+})();
+</script>
+<script src="/js/resume-upsell.js" defer></script><script src="/js/back-redirect.js"></script></body>
+</html>
