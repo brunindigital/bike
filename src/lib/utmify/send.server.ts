@@ -7,12 +7,8 @@ import { productExternalRef } from "@/lib/pix/products";
 
 const UTMIFY_URL = "https://api.utmify.com.br/api-credentials/orders";
 
-/**
- * Envio de vendas pela aplicação ATIVO: a gateway atual (PLOWFY) não envia
- * para a Utmify, então o site envia os PIX gerados (waiting_payment) e pagos
- * (paid), com trava anti-duplicidade por order_ref.
- */
-const UTMIFY_ENABLED = true;
+/** O envio direto é opcional para não duplicar uma integração nativa do gateway. */
+const UTMIFY_ENABLED = process.env.UTMIFY_DIRECT_SEND_ENABLED === "true";
 
 
 export type UtmifyTracking = {
