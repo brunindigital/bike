@@ -50,7 +50,7 @@ export async function sendMetaPurchase(
   input: CapiPurchaseInput,
 ): Promise<{ ok: boolean; error?: string }> {
   const token = process.env["META_CAPI_ACCESS_TOKEN"];
-  const pixelId = process.env["META_PIXEL_ID"] || "2442971489550167";
+  const pixelId = process.env["META_PIXEL_ID"] || "1028417726916953";
   if (!token) return { ok: false, error: "missing_token" };
   if (!(input.amountReais > 0)) return { ok: false, error: "invalid_amount" };
 
