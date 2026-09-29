@@ -414,6 +414,9 @@ export async function settlePaidTransaction(
 }
 
 /** Asks the active gateway directly whether a transaction is paid. */
-export function fetchGatewayStatus(id: string): Promise<{ paid: boolean; paidAt: string | null }> {
-  return fetchPixStatus(id);
+export function fetchGatewayStatus(
+  id: string,
+  paymentType: "main" | "upsell" = "main",
+): Promise<{ paid: boolean; paidAt: string | null }> {
+  return fetchPixStatus(id, paymentType);
 }

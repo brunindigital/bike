@@ -19,6 +19,7 @@ export function usePixPrefetch(
   amount: number,
   details: string,
   customer: { data: CustomerData; isLoaded: boolean },
+  paymentType: "main" | "upsell" = "upsell",
 ): UsePixPrefetchResult {
   const [data, setData] = useState<PrefetchPixData | null>(null);
   const [loading, setLoading] = useState(false);
@@ -38,6 +39,7 @@ export function usePixPrefetch(
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({
             amount,
+            paymentType,
             client: {
               name: customer.data.name,
               email: customer.data.email,
@@ -85,7 +87,7 @@ export function usePixPrefetch(
     return () => {
       cancelled = true;
     };
-  }, [amount, details, customer.isLoaded, customer.data.name, customer.data.email, customer.data.cpf, customer.data.phone]);
+  }, [amount, details, paymentType, customer.isLoaded, customer.data.name, customer.data.email, customer.data.cpf, customer.data.phone]);
 
   return { data, loading, error };
 }

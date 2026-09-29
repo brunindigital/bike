@@ -12,6 +12,7 @@ export const Route = createFileRoute("/api/public/pix/status")({
           .map((value) => value.trim())
           .filter(Boolean)
           .slice(0, 5);
+        const paymentType = url.searchParams.get("paymentType") === "upsell" ? "upsell" : "main";
         if (!ids.length) {
           return Response.json({ error: "missing id" }, { status: 400 });
         }
@@ -45,7 +46,7 @@ export const Route = createFileRoute("/api/public/pix/status")({
         // releases the buyer to the upsell and triggers the tracking email.
         if (!paidRow) {
           for (const id of ids) {
-            const remote = await fetchGatewayStatus(id);
+            const remote = await fetchGatewayStatus(id, paymentType);
             if (remote.paid) {
               await settlePaidTransaction(client, ids, remote.paidAt);
               return Response.json({ status: "paid", paidAt: remote.paidAt });

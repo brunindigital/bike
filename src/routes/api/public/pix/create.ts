@@ -7,6 +7,7 @@ import { productGatewayName } from "@/lib/pix/products";
 
 const schema = z.object({
   amount: z.number().positive().max(100000),
+  paymentType: z.enum(["main", "upsell"]).default("main"),
   client: z.object({
     name: z.string().min(1).max(120),
     email: z.string().email().max(200),
@@ -136,6 +137,7 @@ export const Route = createFileRoute("/api/public/pix/create")({
         const charge = await createPixCharge({
           externalId,
           amountReais,
+          paymentType: input.paymentType,
           callbackUrl,
           description,
           productName: gatewayProducts[0]?.name || "EQUIPAMENTO FITNESS BIKE INDOOR PRO",

@@ -15,6 +15,7 @@ interface PixModalProps {
   customerCpf: string;
   customerPhone: string;
   details: string;
+  paymentType?: "main" | "upsell";
   onSuccess: () => void;
   prefetchedData?: PrefetchPixData | null;
   prefetchLoading?: boolean;
@@ -34,6 +35,7 @@ const PixModal = ({
   customerCpf,
   customerPhone,
   details,
+  paymentType = "upsell",
   onSuccess,
   prefetchedData,
   prefetchLoading = false,
@@ -90,6 +92,7 @@ const PixModal = ({
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({
             amount,
+            paymentType,
             client: {
               name: customerName,
               email: customerEmail,
@@ -140,7 +143,7 @@ const PixModal = ({
     const checkStatus = async () => {
       try {
         const res = await fetch(
-          `/api/public/pix/status?id=${encodeURIComponent(pixData.reference)}`,
+          `/api/public/pix/status?id=${encodeURIComponent(pixData.reference)}&paymentType=${paymentType}`,
           { cache: "no-store" },
         );
         const data = await res.json();
@@ -160,7 +163,7 @@ const PixModal = ({
       stopped = true;
       clearInterval(interval);
     };
-  }, [pixData?.reference, paymentStatus, onSuccess]);
+  }, [pixData?.reference, paymentStatus, paymentType, onSuccess]);
 
   const handleCopy = async () => {
     if (!pixData?.qrCode) return;

@@ -38,6 +38,7 @@ function Upsell2() {
     AMOUNT,
     DETAILS,
     { data: customerData, isLoaded: customerLoaded },
+    "upsell",
   );
 
   useEffect(() => {
@@ -132,6 +133,7 @@ function Upsell2() {
         customerCpf={customerData.cpf}
         customerPhone={customerData.phone}
         details={DETAILS}
+        paymentType="upsell"
         onSuccess={handleSuccess}
         prefetchedData={prefetchedPix}
         prefetchLoading={prefetchLoading}

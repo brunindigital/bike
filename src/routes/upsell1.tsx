@@ -37,6 +37,7 @@ function Upsell1() {
     AMOUNT,
     DETAILS,
     { data: customerData, isLoaded: customerLoaded },
+    "upsell",
   );
 
   // Se o PIX desta etapa for confirmado depois (aba fechada, volta mais tarde),
@@ -105,6 +106,7 @@ function Upsell1() {
         customerCpf={customerData.cpf}
         customerPhone={customerData.phone}
         details={DETAILS}
+        paymentType="upsell"
         onSuccess={handleSuccess}
         prefetchedData={prefetchedPix}
         prefetchLoading={prefetchLoading}

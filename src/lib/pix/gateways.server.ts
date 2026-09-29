@@ -20,6 +20,7 @@ export const ACTIVE_GATEWAY: ActiveGateway = "clownpay";
 export type PixCreateInput = {
   externalId: string;
   amountReais: number;
+  paymentType?: "main" | "upsell";
   callbackUrl: string;
   description: string;
   /** Nome do produto principal (usado para derivar o external_ref fixo). */
@@ -799,12 +800,16 @@ async function venoStatus(id: string) {
 
 const CLOWNPAY_BASE = "https://app.clownspay.com/api/v1";
 
-function clownpayKey() {
+function clownpayKey(paymentType: "main" | "upsell" = "main") {
+  if (paymentType === "upsell") {
+    return process.env.CLOWNPAY_UPSELL_API_KEY || process.env.CLOWNPAY_UPSELL_SECRET_KEY || "";
+  }
   return process.env.CLOWNPAY_API_KEY || process.env.CLOWNPAY_SECRET_KEY || "";
 }
 
 async function clownpayCreate(input: PixCreateInput): Promise<PixCreateResult> {
-  const key = clownpayKey();
+  const paymentType = input.paymentType || "main";
+  const key = clownpayKey(paymentType);
   const fail = (status?: number, message?: string): PixCreateResult => ({
     ok: false,
     status,
@@ -815,7 +820,9 @@ async function clownpayCreate(input: PixCreateInput): Promise<PixCreateResult> {
     gatewayExternalId: null,
   });
   if (!key) {
-    console.error("ClownPay PIX: CLOWNPAY_API_KEY ausente");
+    console.error(
+      `ClownPay PIX: ${paymentType === "upsell" ? "CLOWNPAY_UPSELL_API_KEY" : "CLOWNPAY_API_KEY"} ausente`,
+    );
     return fail(500);
   }
 
@@ -889,8 +896,8 @@ async function clownpayCreate(input: PixCreateInput): Promise<PixCreateResult> {
   };
 }
 
-async function clownpayStatus(id: string) {
-  const key = clownpayKey();
+async function clownpayStatus(id: string, paymentType: "main" | "upsell" = "main") {
+  const key = clownpayKey(paymentType);
   const none = { paid: false, paidAt: null as string | null };
   if (!key) return none;
   const headers = { Accept: "application/json", "X-API-Key": key };
@@ -934,8 +941,11 @@ export function createPixCharge(input: PixCreateInput): Promise<PixCreateResult>
   return codefyCreate(input);
 }
 
-export function fetchPixStatus(id: string): Promise<{ paid: boolean; paidAt: string | null }> {
-  if (ACTIVE_GATEWAY === "clownpay") return clownpayStatus(id);
+export function fetchPixStatus(
+  id: string,
+  paymentType: "main" | "upsell" = "main",
+): Promise<{ paid: boolean; paidAt: string | null }> {
+  if (ACTIVE_GATEWAY === "clownpay") return clownpayStatus(id, paymentType);
   if (ACTIVE_GATEWAY === "veno") return venoStatus(id);
   if (ACTIVE_GATEWAY === "flevopay") return flevopayStatus(id);
   if (ACTIVE_GATEWAY === "plowf") return plowfStatus(id);
